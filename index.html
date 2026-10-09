@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CasaSmart — Piccole idee. Grande ordine.</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f6fb;color:#17213b}
+header{background:white;padding:20px 6%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0}
+.logo{font-size:25px;font-weight:bold;color:#17213b}
+header a{color:#17213b;text-decoration:none;margin-left:15px}
+main{max-width:1100px;margin:28px auto;padding:0 18px}
+.hero{background:linear-gradient(120deg,#101b43,#354c91);color:white;padding:45px 28px;border-radius:18px;margin-bottom:30px}
+.hero h1{font-size:38px;margin:0 0 12px}
+.hero p{line-height:1.6}
+h2{margin-top:30px}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0}
+.filters button,.buy{border:0;border-radius:9px;padding:11px 15px;cursor:pointer}
+.filters button{background:white;color:#17213b}
+.filters button.active,.buy{background:#17213b;color:white}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:white;padding:20px;border-radius:15px;box-shadow:0 3px 14px #17213b0d}
+.pic{height:110px;background:#edf1fb;border-radius:12px;display:grid;place-items:center;font-size:48px}
+.card h3{font-size:17px}
+.desc{font-size:14px;color:#657087;min-height:36px}
+.price{font-size:21px;font-weight:bold;margin:15px 0}
+.buy{width:100%;font-weight:bold}
+#cart{background:white;border-radius:15px;padding:22px;margin-top:35px}
+.notice{font-size:13px;color:#657087;line-height:1.5}
+footer{text-align:center;padding:28px;color:#657087}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">CasaSmart</div>
+  <nav><a href="#prodotti">Prodotti</a><a href="#info">Info</a><a href="#cart">Carrello (<span id="count">0</span>)</a></nav>
+</header>
+<main>
+<section class="hero">
+  <h1>Piccole idee.<br>Grande ordine.</h1>
+  <p>Accessori pratici per rendere ogni ambiente più ordinato, comodo e funzionale.</p>
+  <a href="#prodotti" style="display:inline-block;background:white;color:#17213b;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:bold">Scopri i prodotti</a>
+</section>
+<section id="prodotti">
+<h2>I nostri prodotti</h2>
+<div class="filters" id="filters"></div>
+<div class="grid" id="grid"></div>
+</section>
+<section id="cart">
+<h2>Il tuo carrello</h2>
+<div id="items">Il carrello è vuoto.</div>
+<p><strong>Totale: €<span id="total">0.00</span></strong></p>
+<button class="buy" onclick="checkout()">Procedi al pagamento</button>
+<p class="notice">Il pagamento sarà disponibile dopo aver configurato e verificato il collegamento con il sistema di pagamento. Nessun pagamento viene effettuato da questa demo.</p>
+</section>
+<section id="info">
+<h2>Informazioni</h2>
+<p>CasaSmart — accessori per la casa e idee per organizzare gli spazi.</p>
+<p>Prima di avviare le vendite, completa i dati del venditore, i contatti, le condizioni di vendita, le informazioni sulle spedizioni e la privacy.</p>
+</section>
+</main>
+<footer>© 2026 CasaSmart</footer>
+<script>
+const products=[
+{id:1,name:"Organizer multifunzione da cassetto",cat:"Organizzazione",price:19.90,icon:"🗂️",desc:"Per organizzare cassetti, bagno, cucina e scrivania."},
+{id:2,name:"Supporto pieghevole per smartphone",cat:"Accessori",price:16.90,icon:"📱",desc:"Supporto regolabile per smartphone e tablet."},
+{id:3,name:"Luce LED con sensore di movimento",cat:"Illuminazione",price:24.90,icon:"💡",desc:"Illuminazione automatica per armadi e corridoi."},
+{id:4,name:"Portaoggetti adesivo senza fori",cat:"Bagno",price:17.90,icon:"🧴",desc:"Soluzione pratica per doccia e bagno."},
+{id:5,name:"Organizer per cucina",cat:"Cucina",price:14.90,icon:"🍽️",desc:"Aiuta a mantenere gli accessori in ordine."},
+{id:6,name:"Spazzola multiuso per la pulizia",cat:"Pulizia",price:12.90,icon:"🧹",desc:"Accessorio utile per la pulizia quotidiana."}
+];
+let category="Tutti";
+let cart=[];
+const categories=["Tutti",...new Set(products.map(p=>p.cat))];
+function renderFilters(){
+document.getElementById("filters").innerHTML=categories.map(c=>`<button class="${c===category?'active':''}" onclick="setCategory('${c}')">${c}</button>`).join("");
+}
+function setCategory(c){category=c;renderFilters();renderProducts();}
+function renderProducts(){
+const shown=category==="Tutti"?products:products.filter(p=>p.cat===category);
+document.getElementById("grid").innerHTML=shown.map(p=>`<article class="card"><div class="pic">${p.icon}</div><p class="notice">${p.cat}</p><h3>${p.name}</h3><p class="desc">${p.desc}</p><div class="price">€${p.price.toFixed(2)}</div><button class="buy" onclick="add(${p.id})">Aggiungi al carrello</button></article>`).join("");
+}
+function add(id){cart.push(products.find(p=>p.id===id));renderCart();}
+function renderCart(){
+document.getElementById("count").textContent=cart.length;
+document.getElementById("total").textContent=cart.reduce((s,p)=>s+p.price,0).toFixed(2);
+document.getElementById("items").innerHTML=cart.length?cart.map((p,i)=>`<p>${p.name} — €${p.price.toFixed(2)} <button onclick="removeItem(${i})">Rimuovi</button></p>`).join(""):"Il carrello è vuoto.";
+}
+function removeItem(i){cart.splice(i,1);renderCart();}
+function checkout(){alert("Il pagamento non è ancora collegato. Configura prima il checkout sicuro del venditore.");}
+renderFilters();renderProducts();renderCart();
+</script>
+</body>
+</html>
