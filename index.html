@@ -1,94 +1,1013 @@
-<!DOCTYPE html><html lang="it">
+<!DOCTYPE html>
+<html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CasaSmart — Piccole idee. Grande ordine.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#173d32">
+<meta name="description" content="CasaSmart: accessori pratici per organizzare e migliorare la tua casa.">
+<title>CasaSmart | Piccole idee, grande ordine</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f4f6fb;color:#17213b}
-header{background:white;padding:20px 6%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0}
-.logo{font-size:25px;font-weight:bold;color:#17213b}
-header a{color:#17213b;text-decoration:none;margin-left:15px}
-main{max-width:1100px;margin:28px auto;padding:0 18px}
-.hero{background:linear-gradient(120deg,#101b43,#354c91);color:white;padding:45px 28px;border-radius:18px;margin-bottom:30px}
-.hero h1{font-size:38px;margin:0 0 12px}
-.hero p{line-height:1.6}
-h2{margin-top:30px}
-.filters{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0}
-.filters button,.buy{border:0;border-radius:9px;padding:11px 15px;cursor:pointer}
-.filters button{background:white;color:#17213b}
-.filters button.active,.buy{background:#17213b;color:white}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.card{background:white;padding:20px;border-radius:15px;box-shadow:0 3px 14px #17213b0d}
-.pic{height:110px;background:#edf1fb;border-radius:12px;display:grid;place-items:center;font-size:48px}
-.card h3{font-size:17px}
-.desc{font-size:14px;color:#657087;min-height:36px}
-.price{font-size:21px;font-weight:bold;margin:15px 0}
-.buy{width:100%;font-weight:bold}
-#cart{background:white;border-radius:15px;padding:22px;margin-top:35px}
-.notice{font-size:13px;color:#657087;line-height:1.5}
-footer{text-align:center;padding:28px;color:#657087}
+:root{--green:#173d32;--green2:#245644;--light:#e7f0eb;--cream:#f7f7f2;--text:#202923;--muted:#68736c;--border:#e2e7e2;--white:#fff;--accent:#d5ed8b;--danger:#b42318;--shadow:0 8px 28px rgba(20,45,34,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--cream);line-height:1.5}button,input,select{font:inherit}button{cursor:pointer}a{color:inherit}
+.topbar{background:var(--green);color:#fff;text-align:center;padding:9px 14px;font-size:13px}
+header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}.nav{max-width:1180px;margin:auto;padding:15px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{text-decoration:none;font-size:25px;font-weight:900;letter-spacing:-.8px;color:var(--green)}.brand span{color:#7b9d3a}.navright{display:flex;gap:10px;align-items:center}
+.btn,.cartbutton{border:0;border-radius:999px;padding:11px 17px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}.primary,.cartbutton{background:var(--green);color:#fff}.primary:hover,.cartbutton:hover{background:var(--green2)}
+.hero{background:linear-gradient(130deg,#e8f0e9,#f6f5e9);padding:58px 22px}.hero-inner{max-width:1180px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:32px}.eyebrow{display:inline-block;color:var(--green);background:#dce9df;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px}h1{color:var(--green);font-size:clamp(38px,5vw,64px);line-height:1.05;letter-spacing:-2px;margin:18px 0}.hero p{color:#536158;font-size:18px;max-width:560px}.heroart{min-height:230px;display:flex;align-items:center;justify-content:center;background:#ffffffad;border:1px solid #fff;border-radius:35px;font-size:clamp(75px,12vw,135px);box-shadow:var(--shadow)}
+main{max-width:1180px;margin:auto;padding:42px 22px 60px}.heading{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:22px}h2{color:var(--green);font-size:clamp(26px,3vw,36px);line-height:1.15;margin:0 0 8px}.muted{color:var(--muted)}.search{width:100%;max-width:330px;padding:12px 15px;border:1px solid var(--border);border-radius:12px;background:#fff;outline-color:var(--green)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}.filter{background:#fff;border:1px solid var(--border);border-radius:999px;padding:8px 13px;color:var(--text)}.filter.active{background:var(--green);border-color:var(--green);color:#fff}
+.productgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:0 3px 14px #142d2209;min-width:0}.art{height:145px;background:var(--light);display:flex;justify-content:center;align-items:center;font-size:60px}.content{padding:16px;display:flex;flex-direction:column;flex:1}.cat{color:#55745f;font-size:11px;text-transform:uppercase;font-weight:800;letter-spacing:.7px}.card h3{color:var(--green);font-size:17px;line-height:1.3;margin:7px 0}.desc{color:var(--muted);font-size:13px;margin:0 0 14px;flex:1}.bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px}.price{color:var(--green);font-size:19px;font-weight:900;white-space:nowrap}.add{background:var(--green);color:#fff;border:0;border-radius:10px;padding:10px 11px;font-size:12px;font-weight:800}.add:hover{background:var(--green2)}.noresults{background:#fff;border:1px solid var(--border);border-radius:12px;padding:25px;color:var(--muted);grid-column:1/-1}
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:42px}.benefit{background:#fff;border:1px solid var(--border);border-radius:15px;padding:19px}.benefit strong{display:block;color:var(--green);margin:7px 0}.benefit p{margin:0;color:var(--muted);font-size:14px}
+.cartsection{margin-top:48px;background:#fff;border:1px solid var(--border);border-radius:18px;padding:24px}.cartitem{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:14px;border-bottom:1px solid var(--border);padding:14px 0}.itemname{font-weight:700}.itemprice{font-weight:800;white-space:nowrap}.qty{display:inline-flex;align-items:center;gap:9px;margin-top:7px}.qty button,.remove{border:1px solid var(--border);background:#fff;border-radius:8px;padding:4px 9px}.remove{color:var(--danger);font-size:12px}.summary{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:20px;font-size:20px;font-weight:900}.notice{background:#fff7df;border:1px solid #f1dfa5;border-radius:12px;padding:13px 15px;color:#6c5414;font-size:13px;margin:18px 0}.checkout{width:100%;padding:15px;font-size:16px}.status{min-height:24px;margin-top:10px;font-size:14px;color:var(--green)}.small{font-size:12px;color:var(--muted)}
+footer{background:#10251f;color:#edf3ee;padding:32px 22px}.footerinner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}.footerbrand{font-size:22px;font-weight:900}footer p{margin:6px 0;color:#c5d1c9;font-size:13px}footer a{color:#fff}
+@media(max-width:850px){.hero-inner{grid-template-columns:1fr}.heroart{min-height:170px}.productgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.benefits{grid-template-columns:1fr}}
+@media(max-width:560px){.nav{padding:12px 14px}.brand{font-size:22px}.navright .navproducts{display:none}.cartbutton{padding:10px 12px;font-size:13px}.hero{padding:40px 17px}main{padding:30px 14px 42px}.heading{align-items:stretch;flex-direction:column}.search{max-width:none}.productgrid{gap:10px}.art{height:110px;font-size:45px}.content{padding:11px}.card h3{font-size:15px}.desc{font-size:12px}.bottom{align-items:stretch;flex-direction:column}.add{width:100%}.price{font-size:18px}.cartsection{padding:16px}.cartitem{grid-template-columns:1fr auto;gap:8px}.itemprice{grid-column:1}.remove{grid-column:2;grid-row:1/span 2}.summary{font-size:18px}}
 </style>
 </head>
 <body>
-<header>
-  <div class="logo">CasaSmart</div>
-  <nav><a href="#prodotti">Prodotti</a><a href="#info">Info</a><a href="#cart">Carrello (<span id="count">0</span>)</a></nav>
-</header>
+<div class="topbar">CasaSmart · Piccole idee, grande ordine</div>
+<header><nav class="nav" aria-label="Navigazione principale">
+<a class="brand" href="#">Casa<span>Smart</span></a>
+<div class="navright"><a class="btn navproducts" href="#prodotti" style="background:#f0f3ef;color:#173d32">Prodotti</a><button class="cartbutton" id="go-cart" type="button">🛒 Carrello <span id="cart-count">0</span></button></div>
+</nav></header>
+<section class="hero"><div class="hero-inner"><div><span class="eyebrow">Benvenuto su CasaSmart</span><h1>Piccole idee.<br>Grande ordine.</h1><p>Accessori pratici per rendere la casa più organizzata, funzionale e piacevole ogni giorno.</p><a class="btn primary" href="#prodotti">Scopri i prodotti →</a></div><div class="heroart" aria-label="Illustrazione della casa">🏡</div></div></section>
 <main>
-<section class="hero">
-  <h1>Piccole idee.<br>Grande ordine.</h1>
-  <p>Accessori pratici per rendere ogni ambiente più ordinato, comodo e funzionale.</p>
-  <a href="#prodotti" style="display:inline-block;background:white;color:#17213b;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:bold">Scopri i prodotti</a>
-</section>
-<section id="prodotti">
-<h2>I nostri prodotti</h2>
-<div class="filters" id="filters"></div>
-<div class="grid" id="grid"></div>
-</section>
-<section id="cart">
-<h2>Il tuo carrello</h2>
-<div id="items">Il carrello è vuoto.</div>
-<p><strong>Totale: €<span id="total">0.00</span></strong></p>
-<button class="buy" onclick="checkout()">Procedi al pagamento</button>
-<p class="notice">Il pagamento sarà disponibile dopo aver configurato e verificato il collegamento con il sistema di pagamento. Nessun pagamento viene effettuato da questa demo.</p>
-</section>
-<section id="info">
-<h2>Informazioni</h2>
-<p>CasaSmart — accessori per la casa e idee per organizzare gli spazi.</p>
-<p>Prima di avviare le vendite, completa i dati del venditore, i contatti, le condizioni di vendita, le informazioni sulle spedizioni e la privacy.</p>
-</section>
+<section id="prodotti"><div class="heading"><div><h2>I nostri prodotti</h2><p class="muted">Esplora il catalogo, cerca e filtra i prodotti.</p></div><input id="search" class="search" type="search" placeholder="Cerca un prodotto..." aria-label="Cerca un prodotto"></div><div class="filters" id="filters" aria-label="Filtra per categoria"></div><div class="productgrid" id="product-grid"></div></section>
+<section class="benefits" aria-label="Informazioni"><div class="benefit">🏠<strong>Idee per la casa</strong><p>Accessori per organizzare gli spazi quotidiani.</p></div><div class="benefit">🛒<strong>Carrello semplice</strong><p>Modifica quantità e controlla il totale prima di procedere.</p></div><div class="benefit">🔒<strong>Pagamento sicuro</strong><p>Il checkout Stripe va configurato prima di ricevere ordini reali.</p></div></section>
+<section class="cartsection" id="carrello"><h2>Il tuo carrello</h2><p class="muted">Controlla il riepilogo del tuo ordine.</p><div id="cart-items" aria-live="polite"></div><div class="summary"><span>Totale prodotti</span><span id="cart-total">€ 0,00</span></div><p class="small">Il totale mostrato comprende solo i prodotti. Eventuali spese di spedizione e imposte devono essere configurate e comunicate correttamente prima dell'acquisto.</p><div class="notice" id="checkout-note">Checkout non ancora configurato: aggiungi il link Stripe reale nella configurazione del codice. Il link esistente da €19,90 vale soltanto per il prodotto per cui è stato creato.</div><button class="btn primary checkout" id="checkout" type="button">Procedi al pagamento</button><div class="status" id="status-message" role="status"></div></section>
 </main>
-<footer>© 2026 CasaSmart</footer>
+<footer><div class="footerinner"><div><div class="footerbrand">CasaSmart</div><p>Piccole idee. Grande ordine.</p></div><div><strong>Informazioni del negozio</strong><p>Assistenza: sostituisci con la tua email reale</p><p>Completa le condizioni di vendita, spedizione, reso e privacy prima di vendere.</p></div></div><div class="footerinner" style="margin-top:22px;border-top:1px solid #3c5148;padding-top:13px"><p>© <span id="year"></span> CasaSmart. Tutti i diritti riservati.</p></div></footer>
 <script>
-const products=[
-{id:1,name:"Organizer multifunzione da cassetto",cat:"Organizzazione",price:19.90,icon:"🗂️",desc:"Per organizzare cassetti, bagno, cucina e scrivania."},
-{id:2,name:"Supporto pieghevole per smartphone",cat:"Accessori",price:16.90,icon:"📱",desc:"Supporto regolabile per smartphone e tablet."},
-{id:3,name:"Luce LED con sensore di movimento",cat:"Illuminazione",price:24.90,icon:"💡",desc:"Illuminazione automatica per armadi e corridoi."},
-{id:4,name:"Portaoggetti adesivo senza fori",cat:"Bagno",price:17.90,icon:"🧴",desc:"Soluzione pratica per doccia e bagno."},
-{id:5,name:"Organizer per cucina",cat:"Cucina",price:14.90,icon:"🍽️",desc:"Aiuta a mantenere gli accessori in ordine."},
-{id:6,name:"Spazzola multiuso per la pulizia",cat:"Pulizia",price:12.90,icon:"🧹",desc:"Accessorio utile per la pulizia quotidiana."}
+"use strict";
+
+/*
+CONFIGURAZIONE STRIPE:
+Inserisci un link di pagamento Stripe per ciascun prodotto.
+Il link già creato per l'organizzatore a €19,90 va inserito nella riga del prodotto 1.
+Non inserire qui password o chiavi segrete.
+Un carrello con più prodotti richiede un checkout Stripe dinamico tramite backend
+o un'integrazione server sicura; non basta un singolo Payment Link.
+*/
+const STRIPE_LINKS = {
+  1: "INCOLLA_QUI_IL_LINK_STRIPE_ORGANIZER",
+  2: "", 3: "", 4: "", 5: "", 6: "", 7: "", 8: "", 9: "", 10: "",
+  11: "", 12: "", 13: "", 14: "", 15: "", 16: "", 17: "", 18: "", 19: "", 20: "",
+  21: "", 22: "", 23: "", 24: "", 25: "", 26: "", 27: "", 28: "", 29: "", 30: "",
+  31: "", 32: "", 33: "", 34: "", 35: "", 36: "", 37: "", 38: "", 39: "", 40: "",
+  41: "", 42: "", 43: "", 44: "", 45: "", 46: "", 47: "", 48: "", 49: "", 50: "",
+  51: "", 52: "", 53: "", 54: "", 55: "", 56: "", 57: "", 58: "", 59: "", 60: "",
+  61: "", 62: "", 63: "", 64: "", 65: "", 66: "", 67: "", 68: "", 69: "", 70: "",
+  71: "", 72: "", 73: "", 74: "", 75: "", 76: "", 77: "", 78: "", 79: "", 80: "",
+  81: "", 82: "", 83: "", 84: "", 85: "", 86: "", 87: "", 88: "", 89: "", 90: "",
+  91: "", 92: "", 93: "", 94: "", 95: "", 96: "", 97: "", 98: "", 99: "", 100: ""
+};
+
+const products = [
+  {
+    "id": 1,
+    "name": "Organizer multifunzione da cassetto",
+    "category": "Organizzazione",
+    "price": 19.9,
+    "icon": "🗂️",
+    "description": "Per organizzare cassetti, bagno, cucina e scrivania."
+  },
+  {
+    "id": 2,
+    "name": "Supporto pieghevole per smartphone",
+    "category": "Accessori",
+    "price": 16.9,
+    "icon": "📱",
+    "description": "Supporto regolabile per smartphone e tablet."
+  },
+  {
+    "id": 3,
+    "name": "Luce LED con sensore di movimento",
+    "category": "Illuminazione",
+    "price": 24.9,
+    "icon": "💡",
+    "description": "Illuminazione automatica per armadi e corridoi."
+  },
+  {
+    "id": 4,
+    "name": "Portaoggetti adesivo senza fori",
+    "category": "Bagno",
+    "price": 17.9,
+    "icon": "🧴",
+    "description": "Soluzione pratica per doccia e bagno."
+  },
+  {
+    "id": 5,
+    "name": "Organizer per cucina",
+    "category": "Cucina",
+    "price": 14.9,
+    "icon": "🍽️",
+    "description": "Aiuta a mantenere gli accessori in ordine."
+  },
+  {
+    "id": 6,
+    "name": "Spazzola multiuso per la pulizia",
+    "category": "Pulizia",
+    "price": 12.9,
+    "icon": "🧹",
+    "description": "Accessorio utile per la pulizia quotidiana."
+  },
+  {
+    "id": 7,
+    "name": "Contenitore ermetico per alimenti",
+    "category": "Cucina",
+    "price": 9.9,
+    "icon": "🥫",
+    "description": "Contenitore pratico per conservare gli alimenti."
+  },
+  {
+    "id": 8,
+    "name": "Portaspezie salvaspazio",
+    "category": "Cucina",
+    "price": 12.9,
+    "icon": "🧂",
+    "description": "Organizza spezie e piccoli barattoli."
+  },
+  {
+    "id": 9,
+    "name": "Scolapiatti compatto",
+    "category": "Cucina",
+    "price": 18.9,
+    "icon": "🍽️",
+    "description": "Aiuta a tenere ordinato il piano di lavoro."
+  },
+  {
+    "id": 10,
+    "name": "Tagliere multifunzione",
+    "category": "Cucina",
+    "price": 11.9,
+    "icon": "🔪",
+    "description": "Superficie pratica per la preparazione degli alimenti."
+  },
+  {
+    "id": 11,
+    "name": "Dispenser per sapone",
+    "category": "Bagno",
+    "price": 8.9,
+    "icon": "🧼",
+    "description": "Dispenser semplice per il lavandino."
+  },
+  {
+    "id": 12,
+    "name": "Portaspazzolini da bagno",
+    "category": "Bagno",
+    "price": 7.9,
+    "icon": "🪥",
+    "description": "Tiene in ordine gli accessori per l'igiene."
+  },
+  {
+    "id": 13,
+    "name": "Mensola doccia angolare",
+    "category": "Bagno",
+    "price": 15.9,
+    "icon": "🚿",
+    "description": "Sfrutta lo spazio negli angoli della doccia."
+  },
+  {
+    "id": 14,
+    "name": "Tappetino antiscivolo",
+    "category": "Bagno",
+    "price": 10.9,
+    "icon": "🛁",
+    "description": "Tappetino pratico per la zona bagno."
+  },
+  {
+    "id": 15,
+    "name": "Scatola portaoggetti pieghevole",
+    "category": "Organizzazione",
+    "price": 13.9,
+    "icon": "📦",
+    "description": "Contenitore pieghevole per riporre piccoli oggetti."
+  },
+  {
+    "id": 16,
+    "name": "Divisori per cassetti",
+    "category": "Organizzazione",
+    "price": 9.9,
+    "icon": "🧩",
+    "description": "Separa accessori e oggetti nei cassetti."
+  },
+  {
+    "id": 17,
+    "name": "Organizer per armadio",
+    "category": "Organizzazione",
+    "price": 18.9,
+    "icon": "👕",
+    "description": "Aiuta a sistemare vestiti e accessori."
+  },
+  {
+    "id": 18,
+    "name": "Ganci adesivi multipli",
+    "category": "Organizzazione",
+    "price": 6.9,
+    "icon": "🪝",
+    "description": "Ganci per appendere oggetti leggeri."
+  },
+  {
+    "id": 19,
+    "name": "Portachiavi da parete",
+    "category": "Organizzazione",
+    "price": 8.9,
+    "icon": "🔑",
+    "description": "Un posto dedicato alle chiavi."
+  },
+  {
+    "id": 20,
+    "name": "Scatola per cavi",
+    "category": "Organizzazione",
+    "price": 12.9,
+    "icon": "🔌",
+    "description": "Raccoglie e nasconde cavi e ciabatte."
+  },
+  {
+    "id": 21,
+    "name": "Organizer da scrivania",
+    "category": "Ufficio",
+    "price": 14.9,
+    "icon": "✏️",
+    "description": "Tiene in ordine penne e piccoli accessori."
+  },
+  {
+    "id": 22,
+    "name": "Lampada da scrivania LED",
+    "category": "Illuminazione",
+    "price": 22.9,
+    "icon": "🛋️",
+    "description": "Luce per leggere e lavorare."
+  },
+  {
+    "id": 23,
+    "name": "Striscia LED decorativa",
+    "category": "Illuminazione",
+    "price": 17.9,
+    "icon": "🌈",
+    "description": "Illuminazione decorativa per ambienti interni."
+  },
+  {
+    "id": 24,
+    "name": "Luce notturna compatta",
+    "category": "Illuminazione",
+    "price": 9.9,
+    "icon": "🌙",
+    "description": "Piccola luce per la notte."
+  },
+  {
+    "id": 25,
+    "name": "Torcia ricaricabile",
+    "category": "Illuminazione",
+    "price": 14.9,
+    "icon": "🔦",
+    "description": "Torcia pratica per casa e garage."
+  },
+  {
+    "id": 26,
+    "name": "Organizer per telecomandi",
+    "category": "Soggiorno",
+    "price": 8.9,
+    "icon": "📺",
+    "description": "Raccoglie telecomandi e piccoli oggetti."
+  },
+  {
+    "id": 27,
+    "name": "Cuscino decorativo",
+    "category": "Soggiorno",
+    "price": 16.9,
+    "icon": "🛋️",
+    "description": "Aggiunge un tocco decorativo al divano."
+  },
+  {
+    "id": 28,
+    "name": "Coperta morbida",
+    "category": "Soggiorno",
+    "price": 24.9,
+    "icon": "🧣",
+    "description": "Coperta per momenti di relax."
+  },
+  {
+    "id": 29,
+    "name": "Vassoio da divano",
+    "category": "Soggiorno",
+    "price": 13.9,
+    "icon": "☕",
+    "description": "Appoggio pratico per bevande e piccoli oggetti."
+  },
+  {
+    "id": 30,
+    "name": "Portafoto da tavolo",
+    "category": "Decorazione",
+    "price": 9.9,
+    "icon": "🖼️",
+    "description": "Espone le tue fotografie preferite."
+  },
+  {
+    "id": 31,
+    "name": "Vaso decorativo",
+    "category": "Decorazione",
+    "price": 14.9,
+    "icon": "🏺",
+    "description": "Accessorio decorativo per la casa."
+  },
+  {
+    "id": 32,
+    "name": "Pianta artificiale decorativa",
+    "category": "Decorazione",
+    "price": 12.9,
+    "icon": "🪴",
+    "description": "Verde decorativo senza necessità di irrigazione."
+  },
+  {
+    "id": 33,
+    "name": "Orologio da parete",
+    "category": "Decorazione",
+    "price": 19.9,
+    "icon": "🕒",
+    "description": "Orologio per cucina o soggiorno."
+  },
+  {
+    "id": 34,
+    "name": "Specchio da parete",
+    "category": "Decorazione",
+    "price": 21.9,
+    "icon": "🪞",
+    "description": "Specchio decorativo per interni."
+  },
+  {
+    "id": 35,
+    "name": "Tappeto ingresso",
+    "category": "Decorazione",
+    "price": 15.9,
+    "icon": "🚪",
+    "description": "Tappeto per l'ingresso di casa."
+  },
+  {
+    "id": 36,
+    "name": "Profumatore per ambienti",
+    "category": "Decorazione",
+    "price": 11.9,
+    "icon": "🌸",
+    "description": "Aiuta a profumare gli ambienti."
+  },
+  {
+    "id": 37,
+    "name": "Scatola per scarpe",
+    "category": "Organizzazione",
+    "price": 10.9,
+    "icon": "👟",
+    "description": "Contenitore per riporre le scarpe."
+  },
+  {
+    "id": 38,
+    "name": "Portabiancheria pieghevole",
+    "category": "Lavanderia",
+    "price": 18.9,
+    "icon": "🧺",
+    "description": "Cesto pratico per il bucato."
+  },
+  {
+    "id": 39,
+    "name": "Sacchetti per bucato delicato",
+    "category": "Lavanderia",
+    "price": 6.9,
+    "icon": "🧦",
+    "description": "Proteggono i capi durante il lavaggio."
+  },
+  {
+    "id": 40,
+    "name": "Palline per asciugatrice",
+    "category": "Lavanderia",
+    "price": 8.9,
+    "icon": "🧶",
+    "description": "Accessorio per il ciclo di asciugatura."
+  },
+  {
+    "id": 41,
+    "name": "Stendino compatto",
+    "category": "Lavanderia",
+    "price": 27.9,
+    "icon": "👚",
+    "description": "Soluzione compatta per stendere il bucato."
+  },
+  {
+    "id": 42,
+    "name": "Spazzola levapelucchi",
+    "category": "Pulizia",
+    "price": 7.9,
+    "icon": "🧥",
+    "description": "Rimuove pelucchi dai tessuti."
+  },
+  {
+    "id": 43,
+    "name": "Panni in microfibra",
+    "category": "Pulizia",
+    "price": 6.9,
+    "icon": "🧽",
+    "description": "Panni per le pulizie domestiche."
+  },
+  {
+    "id": 44,
+    "name": "Spruzzino ricaricabile",
+    "category": "Pulizia",
+    "price": 5.9,
+    "icon": "🧴",
+    "description": "Flacone riutilizzabile per le pulizie."
+  },
+  {
+    "id": 45,
+    "name": "Spazzola per fughe",
+    "category": "Pulizia",
+    "price": 7.9,
+    "icon": "🪥",
+    "description": "Per pulire gli spazi tra le piastrelle."
+  },
+  {
+    "id": 46,
+    "name": "Rullo raccogli-peli",
+    "category": "Pulizia",
+    "price": 6.9,
+    "icon": "🐾",
+    "description": "Raccoglie peli e lanugine dai tessuti."
+  },
+  {
+    "id": 47,
+    "name": "Paletta con spazzola",
+    "category": "Pulizia",
+    "price": 8.9,
+    "icon": "🧹",
+    "description": "Kit compatto per raccogliere lo sporco."
+  },
+  {
+    "id": 48,
+    "name": "Pattumiera da cucina",
+    "category": "Cucina",
+    "price": 16.9,
+    "icon": "🗑️",
+    "description": "Contenitore per i rifiuti domestici."
+  },
+  {
+    "id": 49,
+    "name": "Sacchetti riutilizzabili per alimenti",
+    "category": "Cucina",
+    "price": 8.9,
+    "icon": "🥬",
+    "description": "Alternativa riutilizzabile per conservare alimenti."
+  },
+  {
+    "id": 50,
+    "name": "Bilancia da cucina",
+    "category": "Cucina",
+    "price": 15.9,
+    "icon": "⚖️",
+    "description": "Per pesare ingredienti in cucina."
+  },
+  {
+    "id": 51,
+    "name": "Timer da cucina",
+    "category": "Cucina",
+    "price": 7.9,
+    "icon": "⏲️",
+    "description": "Timer semplice per le preparazioni."
+  },
+  {
+    "id": 52,
+    "name": "Apribarattoli ergonomico",
+    "category": "Cucina",
+    "price": 8.9,
+    "icon": "🫙",
+    "description": "Aiuta ad aprire i barattoli."
+  },
+  {
+    "id": 53,
+    "name": "Portarotolo da cucina",
+    "category": "Cucina",
+    "price": 9.9,
+    "icon": "🧻",
+    "description": "Tiene a portata di mano la carta da cucina."
+  },
+  {
+    "id": 54,
+    "name": "Tappetino scolapiatti",
+    "category": "Cucina",
+    "price": 7.9,
+    "icon": "💧",
+    "description": "Superficie assorbente per stoviglie."
+  },
+  {
+    "id": 55,
+    "name": "Organizer sotto-lavello",
+    "category": "Cucina",
+    "price": 21.9,
+    "icon": "🧴",
+    "description": "Sfrutta lo spazio sotto il lavello."
+  },
+  {
+    "id": 56,
+    "name": "Cestino portaoggetti",
+    "category": "Organizzazione",
+    "price": 8.9,
+    "icon": "🧺",
+    "description": "Cestino per piccoli oggetti domestici."
+  },
+  {
+    "id": 57,
+    "name": "Borsa organizer per auto",
+    "category": "Auto",
+    "price": 17.9,
+    "icon": "🚗",
+    "description": "Aiuta a mantenere in ordine il bagagliaio."
+  },
+  {
+    "id": 58,
+    "name": "Supporto auto per smartphone",
+    "category": "Auto",
+    "price": 12.9,
+    "icon": "📱",
+    "description": "Supporto per usare il telefono in sicurezza da fermo."
+  },
+  {
+    "id": 59,
+    "name": "Organizer sedile auto",
+    "category": "Auto",
+    "price": 14.9,
+    "icon": "🚙",
+    "description": "Tasche per accessori e piccoli oggetti."
+  },
+  {
+    "id": 60,
+    "name": "Parasole per auto",
+    "category": "Auto",
+    "price": 9.9,
+    "icon": "☀️",
+    "description": "Accessorio parasole per l'auto."
+  },
+  {
+    "id": 61,
+    "name": "Kit pulizia interni auto",
+    "category": "Auto",
+    "price": 13.9,
+    "icon": "🧽",
+    "description": "Accessori per la pulizia degli interni."
+  },
+  {
+    "id": 62,
+    "name": "Borraccia riutilizzabile",
+    "category": "Accessori",
+    "price": 12.9,
+    "icon": "🥤",
+    "description": "Borraccia per l'uso quotidiano."
+  },
+  {
+    "id": 63,
+    "name": "Borsa pieghevole",
+    "category": "Accessori",
+    "price": 7.9,
+    "icon": "🛍️",
+    "description": "Borsa riutilizzabile da portare con sé."
+  },
+  {
+    "id": 64,
+    "name": "Portamonete compatto",
+    "category": "Accessori",
+    "price": 9.9,
+    "icon": "👛",
+    "description": "Portamonete per piccoli oggetti."
+  },
+  {
+    "id": 65,
+    "name": "Custodia per occhiali",
+    "category": "Accessori",
+    "price": 6.9,
+    "icon": "👓",
+    "description": "Custodia per proteggere gli occhiali."
+  },
+  {
+    "id": 66,
+    "name": "Portadocumenti da viaggio",
+    "category": "Viaggio",
+    "price": 13.9,
+    "icon": "🛂",
+    "description": "Organizza documenti e carte da viaggio."
+  },
+  {
+    "id": 67,
+    "name": "Organizer valigia",
+    "category": "Viaggio",
+    "price": 18.9,
+    "icon": "🧳",
+    "description": "Sacche per separare gli oggetti in valigia."
+  },
+  {
+    "id": 68,
+    "name": "Etichette per bagagli",
+    "category": "Viaggio",
+    "price": 5.9,
+    "icon": "🏷️",
+    "description": "Aiutano a riconoscere i bagagli."
+  },
+  {
+    "id": 69,
+    "name": "Cuscino da viaggio",
+    "category": "Viaggio",
+    "price": 16.9,
+    "icon": "✈️",
+    "description": "Supporto per i viaggi."
+  },
+  {
+    "id": 70,
+    "name": "Borsa termica compatta",
+    "category": "Viaggio",
+    "price": 19.9,
+    "icon": "🧊",
+    "description": "Borsa per trasportare alimenti e bevande."
+  },
+  {
+    "id": 71,
+    "name": "Custodia per cavi da viaggio",
+    "category": "Viaggio",
+    "price": 10.9,
+    "icon": "🔋",
+    "description": "Raccoglie caricabatterie e cavetti."
+  },
+  {
+    "id": 72,
+    "name": "Supporto per tablet",
+    "category": "Accessori",
+    "price": 18.9,
+    "icon": "📲",
+    "description": "Supporto da tavolo per tablet."
+  },
+  {
+    "id": 73,
+    "name": "Tappetino mouse ergonomico",
+    "category": "Ufficio",
+    "price": 9.9,
+    "icon": "🖱️",
+    "description": "Superficie per mouse con appoggio confortevole."
+  },
+  {
+    "id": 74,
+    "name": "Portapenne minimal",
+    "category": "Ufficio",
+    "price": 7.9,
+    "icon": "🖊️",
+    "description": "Contenitore per penne e matite."
+  },
+  {
+    "id": 75,
+    "name": "Lavagna memo da parete",
+    "category": "Ufficio",
+    "price": 14.9,
+    "icon": "📝",
+    "description": "Per appunti e promemoria."
+  },
+  {
+    "id": 76,
+    "name": "Clip fermacavi",
+    "category": "Ufficio",
+    "price": 5.9,
+    "icon": "🔗",
+    "description": "Mantiene i cavi organizzati sulla scrivania."
+  },
+  {
+    "id": 77,
+    "name": "Supporto laptop regolabile",
+    "category": "Ufficio",
+    "price": 25.9,
+    "icon": "💻",
+    "description": "Supporto per sollevare il computer portatile."
+  },
+  {
+    "id": 78,
+    "name": "Poggiapolsi per tastiera",
+    "category": "Ufficio",
+    "price": 12.9,
+    "icon": "⌨️",
+    "description": "Appoggio per la postazione di lavoro."
+  },
+  {
+    "id": 79,
+    "name": "Organizer documenti",
+    "category": "Ufficio",
+    "price": 11.9,
+    "icon": "📁",
+    "description": "Raccoglie fogli e documenti."
+  },
+  {
+    "id": 80,
+    "name": "Tenda oscurante",
+    "category": "Camera da letto",
+    "price": 29.9,
+    "icon": "🪟",
+    "description": "Tenda per ridurre la luce esterna."
+  },
+  {
+    "id": 81,
+    "name": "Mascherina per dormire",
+    "category": "Camera da letto",
+    "price": 6.9,
+    "icon": "😴",
+    "description": "Accessorio per riposare al buio."
+  },
+  {
+    "id": 82,
+    "name": "Organizer comodino",
+    "category": "Camera da letto",
+    "price": 9.9,
+    "icon": "🛏️",
+    "description": "Tiene a portata di mano gli oggetti essenziali."
+  },
+  {
+    "id": 83,
+    "name": "Luce lettura clip",
+    "category": "Illuminazione",
+    "price": 11.9,
+    "icon": "📖",
+    "description": "Luce da agganciare per la lettura."
+  },
+  {
+    "id": 84,
+    "name": "Scatola porta-gioielli",
+    "category": "Organizzazione",
+    "price": 15.9,
+    "icon": "💍",
+    "description": "Custodia per gioielli e piccoli accessori."
+  },
+  {
+    "id": 85,
+    "name": "Porta anelli",
+    "category": "Organizzazione",
+    "price": 6.9,
+    "icon": "💎",
+    "description": "Supporto per tenere gli anelli in ordine."
+  },
+  {
+    "id": 86,
+    "name": "Specchietto cosmetico",
+    "category": "Bagno",
+    "price": 10.9,
+    "icon": "🪞",
+    "description": "Specchietto compatto per la cura personale."
+  },
+  {
+    "id": 87,
+    "name": "Organizer cosmetici",
+    "category": "Bagno",
+    "price": 14.9,
+    "icon": "💄",
+    "description": "Raccoglie trucchi e accessori di bellezza."
+  },
+  {
+    "id": 88,
+    "name": "Fascia capelli per skincare",
+    "category": "Bagno",
+    "price": 5.9,
+    "icon": "🎀",
+    "description": "Accessorio per la routine di cura del viso."
+  },
+  {
+    "id": 89,
+    "name": "Pettine antistatico",
+    "category": "Bagno",
+    "price": 6.9,
+    "icon": "💇",
+    "description": "Pettine per la cura quotidiana dei capelli."
+  },
+  {
+    "id": 90,
+    "name": "Porta sapone drenante",
+    "category": "Bagno",
+    "price": 5.9,
+    "icon": "🧼",
+    "description": "Supporto per mantenere asciutto il sapone."
+  },
+  {
+    "id": 91,
+    "name": "Gancio porta asciugamani",
+    "category": "Bagno",
+    "price": 8.9,
+    "icon": "🪝",
+    "description": "Gancio per asciugamani e accappatoi."
+  },
+  {
+    "id": 92,
+    "name": "Borsa organizer per bagno",
+    "category": "Viaggio",
+    "price": 12.9,
+    "icon": "🧳",
+    "description": "Borsa per gli accessori da toilette."
+  },
+  {
+    "id": 93,
+    "name": "Kit cucito compatto",
+    "category": "Accessori",
+    "price": 8.9,
+    "icon": "🧵",
+    "description": "Kit base per piccole riparazioni."
+  },
+  {
+    "id": 94,
+    "name": "Nastro biadesivo rimovibile",
+    "category": "Fai da te",
+    "price": 5.9,
+    "icon": "📏",
+    "description": "Nastro per piccoli lavori domestici."
+  },
+  {
+    "id": 95,
+    "name": "Set fascette fermacavi",
+    "category": "Fai da te",
+    "price": 4.9,
+    "icon": "🔧",
+    "description": "Per raccogliere e ordinare i cavi."
+  },
+  {
+    "id": 96,
+    "name": "Livella tascabile",
+    "category": "Fai da te",
+    "price": 7.9,
+    "icon": "📐",
+    "description": "Strumento compatto per piccoli lavori."
+  },
+  {
+    "id": 97,
+    "name": "Guanti da giardinaggio",
+    "category": "Giardino",
+    "price": 8.9,
+    "icon": "🧤",
+    "description": "Guanti per attività di giardinaggio."
+  },
+  {
+    "id": 98,
+    "name": "Spruzzatore per piante",
+    "category": "Giardino",
+    "price": 6.9,
+    "icon": "🌱",
+    "description": "Spruzzatore per la cura delle piante."
+  },
+  {
+    "id": 99,
+    "name": "Vasi per erbe aromatiche",
+    "category": "Giardino",
+    "price": 13.9,
+    "icon": "🌿",
+    "description": "Vasi per coltivare erbe in casa."
+  },
+  {
+    "id": 100,
+    "name": "Luci solari da giardino",
+    "category": "Giardino",
+    "price": 22.9,
+    "icon": "🌞",
+    "description": "Luci decorative a energia solare."
+  }
 ];
-let category="Tutti";
-let cart=[];
-const categories=["Tutti",...new Set(products.map(p=>p.cat))];
-function renderFilters(){
-document.getElementById("filters").innerHTML=categories.map(c=>`<button class="${c===category?'active':''}" onclick="setCategory('${c}')">${c}</button>`).join("");
+const STORAGE_KEY = "casasmart_cart_v2";
+let activeCategory = "Tutti";
+let searchText = "";
+let cart = loadCart();
+
+const money = value => new Intl.NumberFormat("it-IT", {
+  style: "currency", currency: "EUR"
+}).format(value);
+
+function loadCart() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    if (!Array.isArray(saved)) return [];
+    return saved.filter(item =>
+      products.some(p => p.id === Number(item.id)) &&
+      Number.isInteger(Number(item.quantity)) &&
+      Number(item.quantity) > 0
+    ).map(item => ({id:Number(item.id), quantity:Math.min(99,Number(item.quantity))}));
+  } catch (_) { return []; }
 }
-function setCategory(c){category=c;renderFilters();renderProducts();}
-function renderProducts(){
-const shown=category==="Tutti"?products:products.filter(p=>p.cat===category);
-document.getElementById("grid").innerHTML=shown.map(p=>`<article class="card"><div class="pic">${p.icon}</div><p class="notice">${p.cat}</p><h3>${p.name}</h3><p class="desc">${p.desc}</p><div class="price">€${p.price.toFixed(2)}</div><button class="buy" onclick="add(${p.id})">Aggiungi al carrello</button></article>`).join("");
+function saveCart() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); } catch (_) {}
 }
-function add(id){cart.push(products.find(p=>p.id===id));renderCart();}
-function renderCart(){
-document.getElementById("count").textContent=cart.length;
-document.getElementById("total").textContent=cart.reduce((s,p)=>s+p.price,0).toFixed(2);
-document.getElementById("items").innerHTML=cart.length?cart.map((p,i)=>`<p>${p.name} — €${p.price.toFixed(2)} <button onclick="removeItem(${i})">Rimuovi</button></p>`).join(""):"Il carrello è vuoto.";
+function renderFilters() {
+  const categories = ["Tutti", ...new Set(products.map(p => p.category))];
+  document.getElementById("filters").innerHTML = categories.map(category =>
+    `<button type="button" class="filter ${category === activeCategory ? "active" : ""}" data-category="${escapeHtml(category)}">${escapeHtml(category)}</button>`
+  ).join("");
 }
-function removeItem(i){cart.splice(i,1);renderCart();}
-function checkout(){alert("Il pagamento non è ancora collegato. Configura prima il checkout sicuro del venditore.");}
-renderFilters();renderProducts();renderCart();
+function renderProducts() {
+  const query = searchText.trim().toLocaleLowerCase("it");
+  const shown = products.filter(p =>
+    (activeCategory === "Tutti" || p.category === activeCategory) &&
+    (!query || `${p.name} ${p.category} ${p.description}`.toLocaleLowerCase("it").includes(query))
+  );
+  const grid = document.getElementById("product-grid");
+  if (!shown.length) {
+    grid.innerHTML = '<div class="noresults">Nessun prodotto trovato. Prova un altro termine o categoria.</div>';
+    return;
+  }
+  grid.innerHTML = shown.map(p => `<article class="card">
+    <div class="art" aria-hidden="true">${p.icon}</div>
+    <div class="content"><div class="cat">${escapeHtml(p.category)}</div>
+    <h3>${escapeHtml(p.name)}</h3><p class="desc">${escapeHtml(p.description)}</p>
+    <div class="bottom"><span class="price">${money(p.price)}</span>
+    <button class="add" type="button" data-add="${p.id}">Aggiungi al carrello</button></div></div></article>`).join("");
+}
+function renderCart() {
+  const count = cart.reduce((sum,item) => sum + item.quantity, 0);
+  const total = cart.reduce((sum,item) => {
+    const product = products.find(p => p.id === item.id);
+    return sum + (product ? product.price * item.quantity : 0);
+  }, 0);
+  document.getElementById("cart-count").textContent = count;
+  document.getElementById("cart-total").textContent = money(total);
+  const container = document.getElementById("cart-items");
+  if (!cart.length) {
+    container.innerHTML = '<p class="muted">Il carrello è vuoto. Aggiungi un prodotto per iniziare.</p>';
+    return;
+  }
+  container.innerHTML = cart.map(item => {
+    const p = products.find(product => product.id === item.id);
+    if (!p) return "";
+    return `<div class="cartitem"><div><div class="itemname">${escapeHtml(p.name)}</div>
+      <div class="qty"><button type="button" data-minus="${p.id}" aria-label="Diminuisci quantità">−</button>
+      <span>Quantità: ${item.quantity}</span>
+      <button type="button" data-plus="${p.id}" aria-label="Aumenta quantità">+</button></div></div>
+      <div class="itemprice">${money(p.price * item.quantity)}</div>
+      <button class="remove" type="button" data-remove="${p.id}">Rimuovi</button></div>`;
+  }).join("");
+}
+function addProduct(id) {
+  const item = cart.find(i => i.id === id);
+  if (item) {
+    if (item.quantity < 99) item.quantity++;
+  } else cart.push({id, quantity:1});
+  saveCart(); renderCart(); announce("Prodotto aggiunto al carrello.");
+}
+function changeQuantity(id, delta) {
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+  item.quantity += delta;
+  if (item.quantity <= 0) cart = cart.filter(i => i.id !== id);
+  if (item.quantity > 99) item.quantity = 99;
+  saveCart(); renderCart();
+}
+function removeProduct(id) {
+  cart = cart.filter(i => i.id !== id);
+  saveCart(); renderCart(); announce("Prodotto rimosso.");
+}
+function announce(message) {
+  document.getElementById("status-message").textContent = message;
+}
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+  }[char]));
+}
+function checkout() {
+  if (!cart.length) {
+    announce("Il carrello è vuoto. Aggiungi prima un prodotto.");
+    return;
+  }
+  if (cart.length !== 1 || cart[0].quantity !== 1) {
+    announce("Per pagare un carrello con più prodotti o quantità, serve collegare un checkout Stripe dinamico sicuro. Non procedere con un link di un solo prodotto.");
+    return;
+  }
+  const id = cart[0].id;
+  const link = STRIPE_LINKS[id];
+  if (!link || !/^https:\/\/buy\.stripe\.com\//i.test(link)) {
+    announce("Pagamento non attivo per questo prodotto: configura il suo link Stripe prima di vendere.");
+    return;
+  }
+  window.location.href = link;
+}
+document.getElementById("filters").addEventListener("click", event => {
+  const button = event.target.closest("[data-category]");
+  if (!button) return;
+  activeCategory = button.dataset.category;
+  renderFilters(); renderProducts();
+});
+document.getElementById("product-grid").addEventListener("click", event => {
+  const button = event.target.closest("[data-add]");
+  if (button) addProduct(Number(button.dataset.add));
+});
+document.getElementById("cart-items").addEventListener("click", event => {
+  const target = event.target.closest("button");
+  if (!target) return;
+  if (target.dataset.plus) changeQuantity(Number(target.dataset.plus), 1);
+  if (target.dataset.minus) changeQuantity(Number(target.dataset.minus), -1);
+  if (target.dataset.remove) removeProduct(Number(target.dataset.remove));
+});
+document.getElementById("search").addEventListener("input", event => {
+  searchText = event.target.value; renderProducts();
+});
+document.getElementById("go-cart").addEventListener("click", () => {
+  document.getElementById("carrello").scrollIntoView({behavior:"smooth"});
+});
+document.getElementById("checkout").addEventListener("click", checkout);
+document.getElementById("year").textContent = new Date().getFullYear();
+
+renderFilters();
+renderProducts();
+renderCart();
 </script>
 </body>
 </html>
+
